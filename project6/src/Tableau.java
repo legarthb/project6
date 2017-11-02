@@ -29,7 +29,7 @@ public class Tableau implements Cell {
     			}
     		}
     		else {
-    			this.CardError();
+    			System.out.println("This is an improper move");
     		}   	
     }
     
@@ -58,8 +58,4 @@ public class Tableau implements Cell {
     public Card peek() {
     		return topCard;
     }
-    public String CardError() {
-    		return "That is an improper move!";
-    }
-    
 }
