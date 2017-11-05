@@ -6,11 +6,14 @@ public class FreeCell implements Cell{
 	private ArrayList<Card> cardStack = new ArrayList<Card>();
 	private Card topCard;
  
-	public void addCard(Card card) {
+	public boolean addCard(Card card) {
 		if (this.isEmpty() == true) {
 			cardStack.add(card);
 			this.topCard = card;
+			return true
 		}
+		else
+			return false
 	}
  
 	public void remove() {

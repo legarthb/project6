@@ -9,17 +9,21 @@ public class HomeCell implements Cell{
     public Card peek() {
     		return topCard;
     }
-    public void addCard(Card card){
+    public boolean addCard(Card card){
         if (this.isEmpty() && (card.getRank()==1)){
             cardStack.add(card);
             this.topCard = card;
+            return true
         }
         else if ((card.getSuit().equals(this.topCard.getSuit()) && (card.getRank()==this.topCard.getRank()+1))){
             cardStack.add(card);
             this.topCard = card;
+            return true
         }
-        else
+        else {
             System.out.println("That is an improper move");
+            return false
+        }
     }
     
     public boolean isEmpty(){
