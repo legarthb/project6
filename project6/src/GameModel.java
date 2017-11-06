@@ -43,50 +43,41 @@ public class GameModel {
 	 * @param cell2 cell getting a card
 	 * @param card card that will be removed
 	 */
-	public void move(Object cell1, Object cell2, Card card) {
+	public void move(Object cell1, Object cell2) {
 		if (cell1 instanceof FreeCell) {
 			FreeCell newCell1 = (FreeCell)cell1;
-			if (cell2 instanceof FreeCell) {
-				FreeCell newCell2 = (FreeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
+			if (! newCell1.isEmpty()) {
+				Card card = newCell1.peek();
+				if (cell2 instanceof FreeCell) {
+					FreeCell newCell2 = (FreeCell)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
+					}
+				else if (cell2 instanceof Tableau) {
+					Tableau newCell2 = (Tableau)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
+					}
+				else {
+					HomeCell newCell2 = (HomeCell)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
 				}
-			else if (cell2 instanceof Tableau) {
-				Tableau newCell2 = (Tableau)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
-				}
-			else {
-				HomeCell newCell2 = (HomeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
 			}
 		}
 		else if (cell1 instanceof Tableau) {
 			Tableau newCell1 = (Tableau)cell1;
-			if (cell2 instanceof FreeCell) {
-				FreeCell newCell2 = (FreeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
+			if (! newCell1.isEmpty()) {
+				Card card = newCell1.peek();
+				if (cell2 instanceof FreeCell) {
+					FreeCell newCell2 = (FreeCell)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
+					}
+				else if (cell2 instanceof Tableau) {
+					Tableau newCell2 = (Tableau)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
+					}
+				else {
+					HomeCell newCell2 = (HomeCell)cell2;
+					if (newCell2.addCard(card)) {newCell1.remove();}
 				}
-			else if (cell2 instanceof Tableau) {
-				Tableau newCell2 = (Tableau)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
-				}
-			else {
-				HomeCell newCell2 = (HomeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
-			}
-		}
-		else if (cell1 instanceof HomeCell) {
-			HomeCell newCell1 = (HomeCell)cell1;
-			if (cell2 instanceof FreeCell) {
-				FreeCell newCell2 = (FreeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
-				}
-			else if (cell2 instanceof Tableau) {
-				Tableau newCell2 = (Tableau)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
-				}
-			else {
-				HomeCell newCell2 = (HomeCell)cell2;
-				if (newCell2.addCard(card)) {newCell1.remove();}
 			}
 		}
 			

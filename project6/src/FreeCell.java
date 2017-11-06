@@ -25,6 +25,7 @@ public class FreeCell implements Cell{
 			return true;
 		}
 		else
+			System.out.println("Only one card in a free cell");
 			return false;
 	}
 	/**

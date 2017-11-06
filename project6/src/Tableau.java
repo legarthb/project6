@@ -34,7 +34,7 @@ public class Tableau implements Cell {
     			this.topCard = card;  	
     			return true;
     		}
-    		else if ((this.topCard.getRank()==card.getRank()-1)&&!(this.isEmpty())) {
+    		else if ((this.topCard.getRank()==card.getRank()+1)&&!(this.isEmpty())) {
     			int topCardOrder = topCard.getSuit().getOrder();
     			if (((topCardOrder==1)||(topCardOrder==4)) && ((cardOrder==2)||(cardOrder==3))) {
     				this.cardStack.add(card);
@@ -47,7 +47,10 @@ public class Tableau implements Cell {
     				return true;
     			}
     			else
+    			{
+    				System.out.println("This is an improper move something");
     				return false;
+    			}
     		}
     		else {
     			System.out.println("This is an improper move");
@@ -90,7 +93,16 @@ public class Tableau implements Cell {
      * Removes the last card in the array
      */
     public void remove() {
-    		cardStack.remove(cardStack.size()-1);
+    		if (cardStack.size() > 1) {
+    			topCard = cardStack.get(cardStack.size()-1);
+    			cardStack.remove(cardStack.size()-1);
+    		}
+    		else {
+    			topCard = null;
+    			cardStack.remove(cardStack.size()-1);
+    		}
+    		
+    		
     }
     /**
      * Checks to see what the top card is

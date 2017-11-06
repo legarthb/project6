@@ -27,7 +27,7 @@ public class HomeCell implements Cell{
             this.topCard = card;
             return true;
         }
-        else if ((card.getSuit().equals(this.topCard.getSuit()) && (card.getRank()==this.topCard.getRank()+1))){
+        else if (!this.isEmpty() && (card.getSuit().getOrder() == this.topCard.getSuit().getOrder()  && (card.getRank()==this.topCard.getRank()+1))){
             cardStack.add(card);
             this.topCard = card;
             return true;
@@ -56,10 +56,11 @@ public class HomeCell implements Cell{
      * @return string representation
      */
     public String toString(){
-    		if (this.isEmpty())
-    			return "";
-    		else
-    			return this.topCard.toString();
+    		String result = "";
+        for (Card element:cardStack) {
+        		result += element.toString()+"\n";
+        }
+        return result;
     }
 }
 
