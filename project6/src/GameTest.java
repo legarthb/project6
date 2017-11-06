@@ -3,8 +3,11 @@
 public class GameTest{
     public static void main(String[] args) {
 		GameModel game = new GameModel();
-		game.Begin();
-		game.toString();
+		System.out.println(game.toString());
+		
+		Tableau t1 = new Tableau();
+		FreeCell f1 = new FreeCell();
+		HomeCell h1 = new HomeCell();
 	}
 	
 }

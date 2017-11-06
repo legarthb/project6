@@ -16,24 +16,26 @@ public class Tableau implements Cell {
     		if ((this.isEmpty())&&(card.getRank()==13)) {
     			this.cardStack.add(card);
     			this.topCard = card;  	
-    			return true
+    			return true;
     		}
     		else if ((this.topCard.getRank()==card.getRank()-1)&&!(this.isEmpty())) {
     			int topCardOrder = topCard.getSuit().getOrder();
     			if (((topCardOrder==1)||(topCardOrder==4)) && ((cardOrder==2)||(cardOrder==3))) {
     				this.cardStack.add(card);
     				this.topCard = card;
-    				return true
+    				return true;
     			}
     			else if (((topCardOrder==2)||(topCardOrder==3)) && ((cardOrder==1)||(cardOrder==4))) {
     				this.cardStack.add(card);
     				this.topCard = card;
-    				return true
+    				return true;
     			}
+    			else
+    				return false;
     		}
     		else {
     			System.out.println("This is an improper move");
-    			return false
+    			return false;
     		}   	
     }
     

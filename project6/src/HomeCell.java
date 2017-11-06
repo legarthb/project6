@@ -13,16 +13,16 @@ public class HomeCell implements Cell{
         if (this.isEmpty() && (card.getRank()==1)){
             cardStack.add(card);
             this.topCard = card;
-            return true
+            return true;
         }
         else if ((card.getSuit().equals(this.topCard.getSuit()) && (card.getRank()==this.topCard.getRank()+1))){
             cardStack.add(card);
             this.topCard = card;
-            return true
+            return true;
         }
         else {
             System.out.println("That is an improper move");
-            return false
+            return false;
         }
     }
     
@@ -34,7 +34,10 @@ public class HomeCell implements Cell{
     }
     
     public String toString(){
-        return this.topCard.toString();
+    		if (this.isEmpty())
+    			return "";
+    		else
+    			return this.topCard.toString();
     }
 }
 

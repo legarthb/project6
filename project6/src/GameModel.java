@@ -1,35 +1,63 @@
-import javafx.scene.control.Cell;
-
 public class GameModel {
 	private FreeCell[] freeCells;
 	private Tableau[] tableaux;
 	private HomeCell[] homeCells;
 	private Deck deck;
 	
-	public Begin() {
+	public GameModel() {
 		deck = new Deck();
+		freeCells = new FreeCell[4];
+		homeCells = new HomeCell[4];
+		tableaux = new Tableau[8];
 		for (int i = 0; i < 4; i++) {
 			freeCells[i] = new FreeCell();
 			homeCells[i] = new HomeCell();
 		}
 		
-		for (int i = 0; i < 8; i++) {
-			tableaux[i] = new Tableau();
+		for (int j = 0; j < 8; j++) {
+			tableaux[j] = new Tableau();
 		}
-		for (int i = 0; i < 6; i++) {
-			for (int i = 0; i<8; i++) {
-				tableaux[i].addCardStart(deck.deal());
+		for (int k = 0; k < 6; k++) {
+			for (int l = 0; l<8; l++) {
+				tableaux[l].addCardStart(deck.deal());
 			}	
 		}
-		for (int i = 0; i < 4; i++) {
-			tableaux[i].addCardStart(deck.deal());
+		for (int m = 0; m < 4; m++) {
+			tableaux[m].addCardStart(deck.deal());
 		}
-		
-		public void move(Cell cell1, Cell cell2, Card card) {
-			if (cell2.addCard(card)) {
-				cell1.remove();
-			}		
+	}	
+	public void move(Object cell1, Object cell2, Card card) {
+		if (cell1 instanceof FreeCell) {
+			FreeCell newCell1 = (FreeCell)cell1;
+			if (cell2 instanceof FreeCell) {
+				FreeCell newCell2 = (FreeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else if (cell2 instanceof Tableau) {
+				Tableau newCell2 = (Tableau)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else {
+				HomeCell newCell2 = (HomeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+			}
 		}
+		else if (cell1 instanceof Tableau) {
+			Tableau newCell1 = (Tableau)cell1;
+			if (cell2 instanceof FreeCell) {
+				FreeCell newCell2 = (FreeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else if (cell2 instanceof Tableau) {
+				Tableau newCell2 = (Tableau)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else {
+				HomeCell newCell2 = (HomeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+			}
+		}
+			
 	}
 		
 		public String toString() {
@@ -41,5 +69,6 @@ public class GameModel {
 			for (int i = 0; i < 8; i++) {
 				result += tableaux[i].toString() + "\n";
 			}
+			return result;
 		}	
 }

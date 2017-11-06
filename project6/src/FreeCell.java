@@ -10,15 +10,16 @@ public class FreeCell implements Cell{
 		if (this.isEmpty() == true) {
 			cardStack.add(card);
 			this.topCard = card;
-			return true
+			return true;
 		}
 		else
-			return false
+			return false;
 	}
  
 	public void remove() {
 		if (this.isEmpty() == false) {
 			cardStack.remove(this.cardStack.size() - 1);
+			topCard = null;
 		}
 	}
 	
@@ -29,6 +30,9 @@ public class FreeCell implements Cell{
 		return topCard;
 	}
 	public String toString() {
-		return this.topCard.toString();
+		if (this.isEmpty())
+			return "";
+		else
+			return this.topCard.toString();
 	}
 }
