@@ -1,15 +1,31 @@
 import java.util.ArrayList;
 
+/**
+ * Tableau cell in a game of free cell
+ * @author Brian Legarth
+ * @author Tommy Thetford
+ * @author Chris Randall
+ * @author Mark Donohue
+ */
 public class Tableau implements Cell {
 
     private ArrayList<Card> cardStack = new ArrayList<Card>();
     private Card topCard;
     
+    /**
+     * used to add the initial cards
+     * @param card card that is being added to the initial card stack
+     */
     public void addCardStart(Card card){
     		this.cardStack.add(card);
     		this.topCard = card;
     		
     }    
+    /**
+     * Checks to see if a card can be added and does it if possible
+     * @param card card being checked
+     * @return if the card was added
+     */
     public boolean addCard(Card card){
     		int cardOrder = card.getSuit().getOrder();
     		
@@ -39,6 +55,10 @@ public class Tableau implements Cell {
     		}   	
     }
     
+    /**
+     * Return if the card stack is empty
+     * @return if the card stack is empty
+     */
     public boolean isEmpty(){
         if (this.size() == 0)
             return true;
@@ -46,10 +66,18 @@ public class Tableau implements Cell {
             return false;
     }
     
+    /**
+     * Return the size of the card stack
+     * @return size of the card stack
+     */
     public int size(){
         return cardStack.size();
     }
     
+    /**
+     * Returns the string representation of the stack
+     * @return string representation
+     */
     public String toString(){
     		String result = "";
         for (Card element:cardStack) {
@@ -58,9 +86,16 @@ public class Tableau implements Cell {
     		return result;
         	
     }
+    /**
+     * Removes the last card in the array
+     */
     public void remove() {
     		cardStack.remove(cardStack.size()-1);
     }
+    /**
+     * Checks to see what the top card is
+     * @return top card of the stack
+     */
     public Card peek() {
     		return topCard;
     }

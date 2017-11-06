@@ -1,5 +1,10 @@
-
-//Tried to get this to run ad couldn't in eclipse
+/**
+ * Tester of the entire FreeCell Game
+ * @author Brian Legarth
+ * @author Tommy Thetford
+ * @author Chris Randall
+ * @author Mark Donohue
+ */
 public class GameTest{
     public static void main(String[] args) {
 		GameModel game = new GameModel();
