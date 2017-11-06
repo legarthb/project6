@@ -74,6 +74,21 @@ public class GameModel {
 				if (newCell2.addCard(card)) {newCell1.remove();}
 			}
 		}
+		else if (cell1 instanceof HomeCell) {
+			HomeCell newCell1 = (HomeCell)cell1;
+			if (cell2 instanceof FreeCell) {
+				FreeCell newCell2 = (FreeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else if (cell2 instanceof Tableau) {
+				Tableau newCell2 = (Tableau)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+				}
+			else {
+				HomeCell newCell2 = (HomeCell)cell2;
+				if (newCell2.addCard(card)) {newCell1.remove();}
+			}
+		}
 			
 	}
 	/**
